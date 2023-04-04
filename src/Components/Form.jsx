@@ -1,4 +1,5 @@
 import { useState } from 'react';
+
 const Form = () => {
   const carBrands = ['Mercedes', 'BMW', 'Maserati', 'Infinity', 'Audi'];
 
@@ -12,15 +13,15 @@ const Form = () => {
     price: 0,
   });
 
-  const carBrandOptions = carBrands.map((carBrand, key) => (
-    <option value={carBrand} key={key}>
+  const carBrandOptions = carBrands.map((carBrand) => (
+    <option value={carBrand} key={carBrand}>
       {carBrand}
     </option>
   ));
 
   const handleChange = (e) => {
-    const value =
-      e.target.type === 'checkbox' ? e.target.checked : e.target.value;
+    // const value =
+    //   e.target.type === 'checkbox' ? e.target.checked : e.target.value;
     setState((state) => ({
       ...state,
       [e.target.name]: e.target.value,
@@ -29,14 +30,13 @@ const Form = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(state);
   };
 
   return (
     <>
       <h1>Controlled Form</h1>
       <form onSubmit={handleSubmit}>
-        <label>
+        <label htmlFor="fname">
           First Name:
           <input
             type="text"
@@ -45,7 +45,7 @@ const Form = () => {
             onChange={handleChange}
           />
         </label>
-        <label>
+        <label htmlFor="lname">
           Last Name:
           <input
             type="text"
@@ -54,7 +54,7 @@ const Form = () => {
             onChange={handleChange}
           />
         </label>
-        <label>
+        <label htmlFor="message">
           Your Message:
           <textarea
             name="message"
@@ -62,20 +62,20 @@ const Form = () => {
             onChange={handleChange}
           />
         </label>
-        <label>
+        <label htmlFor="carBrand">
           Car brand:
           <select
             name="carBrand"
             value={state.carBrand}
             onChange={handleChange}
           >
-            <option value={''} disabled>
+            <option value="" disabled>
               --Pick a car brand--
             </option>
             {carBrandOptions}
           </select>
         </label>
-        <label>
+        <label htmlFor="isChecked">
           <input
             type="checkbox"
             name="isChecked"
@@ -84,7 +84,7 @@ const Form = () => {
           />
           Is Checked?
         </label>
-        <label>
+        <label htmlFor="gender">
           <input
             type="radio"
             name="gender"
@@ -94,7 +94,7 @@ const Form = () => {
           />
           Male
         </label>
-        <label>
+        <label htmlFor="gender">
           <input
             type="radio"
             name="gender"
@@ -104,7 +104,7 @@ const Form = () => {
           />
           Female
         </label>
-        <label>
+        <label htmlFor="price">
           Price (between 0 and 50):
           <input
             type="range"
@@ -115,16 +115,35 @@ const Form = () => {
             onChange={handleChange}
           />
         </label>
-        <button>Submit</button>
+        <button type="submit">Submit</button>
       </form>
       <h5>
-        Name: {state.fname} {state.lname}
+        Name:
+        {' '}
+        {state.fname}
+        {' '}
+        {state.lname}
       </h5>
-      <p>Message: {state.message}</p>
-      <h5>Favorite car brand: {state.carBrand}</h5>
-      <h5>Is it checked? : {state.isChecked ? 'Yes' : 'No'}</h5>
-      <h5>Gender : {state.gender}</h5>
-      <h5>Price : ${state.price}</h5>
+      <p>
+        Message:
+        {state.message}
+      </p>
+      <h5>
+        Favorite car brand:
+        {state.carBrand}
+      </h5>
+      <h5>
+        Is it checked? :
+        {state.isChecked ? 'Yes' : 'No'}
+      </h5>
+      <h5>
+        Gender :
+        {state.gender}
+      </h5>
+      <h5>
+        Price : $
+        {state.price}
+      </h5>
     </>
   );
 };

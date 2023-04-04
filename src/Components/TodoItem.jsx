@@ -1,15 +1,22 @@
-import '../styles/TodoItem.css';
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+import styles from '../styles/TodoItem.module.css';
 
 const TodoItem = ({ itemProp, setTodos, delTodo, setUpdate }) => {
   const [editing, setEditing] = useState(false);
-  let viewMode = {};
-  let editMode = {};
+  const viewMode = {};
+  const editMode = {};
   if (editing) {
     viewMode.display = 'none';
   } else {
     editMode.display = 'none';
   }
+  const completedStyle = {
+    fontStyle: 'italic',
+    color: '#595959',
+    opacity: 0.4,
+    textDecoration: 'line-through',
+  };
   const handleChange = (id) => {
     setTodos((prevState) =>
       prevState.map((todo) => {
@@ -35,16 +42,22 @@ const TodoItem = ({ itemProp, setTodos, delTodo, setUpdate }) => {
   };
 
   return (
-    <li className="item">
-      <div className="content" style={viewMode}>
+    <li className={styles.item}>
+      <div className={styles.content} style={viewMode}>
         <input
           type="checkbox"
           checked={itemProp.completed}
           onChange={() => handleChange(itemProp.id)}
         />
-        <button onClick={handleEditing}>Edit</button>
-        <button onClick={() => delTodo(itemProp.id)}>Delete</button>
-        {itemProp.title}
+        <button type="button" onClick={handleEditing}>
+          Edit
+        </button>
+        <button type="button" onClick={() => delTodo(itemProp.id)}>
+          Delete
+        </button>
+        <span style={itemProp.completed ? completedStyle : null}>
+          {itemProp.title}
+        </span>
       </div>
       <input
         type="text"
@@ -59,3 +72,34 @@ const TodoItem = ({ itemProp, setTodos, delTodo, setUpdate }) => {
 };
 
 export default TodoItem;
+TodoItem.propTypes = {
+  itemProp: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    title: PropTypes.string.isRequired,
+    completed: PropTypes.bool.isRequired,
+  }).isRequired,
+};
+
+TodoItem.propTypes = {
+  setTodos: PropTypes.arrayOf({
+    id: PropTypes.number.isRequired,
+    title: PropTypes.string.isRequired,
+    completed: PropTypes.bool.isRequired,
+  }).isRequired,
+};
+
+TodoItem.propTypes = {
+  delTodo: PropTypes.arrayOf({
+    id: PropTypes.number.isRequired,
+    title: PropTypes.string.isRequired,
+    completed: PropTypes.bool.isRequired,
+  }).isRequired,
+};
+
+TodoItem.propTypes = {
+  setUpdate: PropTypes.arrayOf({
+    id: PropTypes.number.isRequired,
+    title: PropTypes.string.isRequired,
+    completed: PropTypes.bool.isRequired,
+  }).isRequired,
+};

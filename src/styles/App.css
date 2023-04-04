@@ -2,7 +2,15 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  font-family:
+    'Trebuchet MS',
+    'Lucida Sans Unicode',
+    'Lucida Grande',
+    'Lucida Sans',
+    Arial,
+    sans-serif;
 }
+
 body {
   font-family: 'Segoe UI', sans-serif;
   line-height: 1.4;
@@ -10,24 +18,28 @@ body {
   background: #fff;
   height: 100vh;
   font-weight: 400;
+  list-style: none;
 }
 
 .wrapper {
   width: 100%;
   padding: 8rem 20px 3rem;
 }
+
 .todos {
   max-width: 580px;
   margin: 0 auto;
 }
+
 .form-container {
   display: flex;
   border-radius: calc(0.1 * 100px);
-  box-shadow: 0px 4px 14px 0px rgba(70, 70, 70, 0.38);
+  box-shadow: 0 4px 14px 0 rgba(70, 70, 70, 0.38);
   justify-content: space-around;
   background: #fff;
   font-size: 1rem;
 }
+
 .input-text {
   width: 85%;
   padding-right: 5px;
@@ -35,9 +47,11 @@ body {
   border-radius: calc(0.5 * 100px);
   font-size: 1rem;
 }
+
 .input-text::placeholder {
   color: #000;
 }
+
 .input-submit {
   background: transparent;
   color: #5b5b5b;
@@ -46,12 +60,14 @@ body {
   font-weight: 600;
   margin-right: 10px;
 }
+
 .input-text,
 .input-submit {
   height: 45px;
   outline: none;
   border: none;
 }
+
 .submit-warning {
   font-size: 13px;
   color: red;
@@ -59,7 +75,7 @@ body {
   display: block;
 }
 
-.navlist {
+.navlink {
   display: flex;
   gap: 1rem;
   align-items: center;
@@ -68,16 +84,22 @@ body {
   top: 0;
   left: 0;
   right: 0;
-}
-
-.navlist li {
-  list-style: none;
-  font-size: 1.2rem;
-  font-weight: 800;
-}
-
-.navlist button {
-  border: none;
+  background: whitesmoke;
   box-shadow: 0 0 10px darkgray;
-  padding: 1rem 0.5rem;
+}
+
+.navlink li {
+  list-style: none;
+}
+
+a {
+  color: #333;
+  text-decoration: none;
+  font-size: 1.2rem;
+}
+
+/* Active route */
+.active {
+  color: #005bb3;
+  font-weight: bold;
 }
