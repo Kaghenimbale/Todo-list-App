@@ -24,7 +24,7 @@ const TodosLogic = () => {
 
   const addTodoItem = (title) => {
     const newTodo = {
-      id: uuidv4,
+      id: uuidv4(),
       title,
       completed: false,
     };
