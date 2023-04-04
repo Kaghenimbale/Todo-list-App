@@ -18,6 +18,7 @@ body {
   background: #fff;
   height: 100vh;
   font-weight: 400;
+  list-style: none;
 }
 
 .wrapper {
