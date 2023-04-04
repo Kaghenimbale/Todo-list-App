@@ -1,21 +1,28 @@
 import React from 'react';
-import Header from './Header';
-import TodosLogic from './TodosLogic';
-import Navbar from './Navbar';
-import Modal from './Modal';
-import Form from './Form';
+import { Routes, Route } from 'react-router-dom';
+import Home from '../routes/Home';
+import Login from '../routes/Login';
+import Profile from '../routes/Profile';
+import About from '../routes/About';
+import NoMatches from '../routes/NoMatches';
+import Layouts from './Layouts';
+import SinglePage from '../routes/SinglePage';
 
 const TodoApp = () => {
   return (
-    <div className="wrapper">
-      <div className="todos">
-        <Navbar />
-        <Header />
-        <TodosLogic />
-        <Modal />
-        {/* <Form /> */}
-      </div>
-    </div>
+    <>
+      <Routes>
+        <Route path="/" element={<Layouts />}>
+          <Route index element={<Home />} />
+          <Route path="about" element={<About />}>
+            <Route path=":slug" element={<SinglePage />} />
+          </Route>
+          <Route path="login" element={<Login />} />
+          <Route path="profile" element={<Profile />} />
+          <Route path="*" element={<NoMatches />} />
+        </Route>
+      </Routes>
+    </>
   );
 };
 

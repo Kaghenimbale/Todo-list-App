@@ -1,4 +1,4 @@
-import '../styles/TodoItem.css';
+import styles from '../styles/TodoItem.module.css';
 import React, { useState } from 'react';
 
 const TodoItem = ({ itemProp, setTodos, delTodo, setUpdate }) => {
@@ -10,6 +10,12 @@ const TodoItem = ({ itemProp, setTodos, delTodo, setUpdate }) => {
   } else {
     editMode.display = 'none';
   }
+  const completedStyle = {
+    fontStyle: 'italic',
+    color: '#595959',
+    opacity: 0.4,
+    textDecoration: 'line-through',
+  };
   const handleChange = (id) => {
     setTodos((prevState) =>
       prevState.map((todo) => {
@@ -35,8 +41,8 @@ const TodoItem = ({ itemProp, setTodos, delTodo, setUpdate }) => {
   };
 
   return (
-    <li className="item">
-      <div className="content" style={viewMode}>
+    <li className={styles.item}>
+      <div className={styles.content} style={viewMode}>
         <input
           type="checkbox"
           checked={itemProp.completed}
@@ -44,7 +50,9 @@ const TodoItem = ({ itemProp, setTodos, delTodo, setUpdate }) => {
         />
         <button onClick={handleEditing}>Edit</button>
         <button onClick={() => delTodo(itemProp.id)}>Delete</button>
-        {itemProp.title}
+        <span style={itemProp.completed ? completedStyle : null}>
+          {itemProp.title}
+        </span>
       </div>
       <input
         type="text"

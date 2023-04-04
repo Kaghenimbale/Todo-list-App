@@ -2,6 +2,8 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+    'Lucida Sans', Arial, sans-serif;
 }
 body {
   font-family: 'Segoe UI', sans-serif;
@@ -59,7 +61,7 @@ body {
   display: block;
 }
 
-.navlist {
+.navlink {
   display: flex;
   gap: 1rem;
   align-items: center;
@@ -68,16 +70,21 @@ body {
   top: 0;
   left: 0;
   right: 0;
-}
-
-.navlist li {
-  list-style: none;
-  font-size: 1.2rem;
-  font-weight: 800;
-}
-
-.navlist button {
-  border: none;
+  background: whitesmoke;
   box-shadow: 0 0 10px darkgray;
-  padding: 1rem 0.5rem;
+}
+
+.navlink li {
+  list-style: none;
+}
+
+a {
+  color: #333;
+  text-decoration: none;
+  font-size: 1.2rem;
+}
+/* Active route */
+.active {
+  color: #005bb3;
+  font-weight: bold;
 }
