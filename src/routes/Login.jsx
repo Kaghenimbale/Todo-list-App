@@ -5,8 +5,10 @@ const Login = () => {
   const [username, setUsername] = useState('');
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!username) return;
-    console.log(username);
+    if (!username) {
+      return username;
+    }
+    return undefined;
   };
   return (
     <div>
@@ -19,7 +21,7 @@ const Login = () => {
             value={username}
             onChange={(e) => setUsername(e.target.value)}
           />
-          <button>Login</button>
+          <button type="submit">Login</button>
         </form>
       </div>
     </div>

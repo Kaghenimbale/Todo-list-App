@@ -1,10 +1,11 @@
-import styles from '../styles/TodoItem.module.css';
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+import styles from '../styles/TodoItem.module.css';
 
 const TodoItem = ({ itemProp, setTodos, delTodo, setUpdate }) => {
   const [editing, setEditing] = useState(false);
-  let viewMode = {};
-  let editMode = {};
+  const viewMode = {};
+  const editMode = {};
   if (editing) {
     viewMode.display = 'none';
   } else {
@@ -48,8 +49,12 @@ const TodoItem = ({ itemProp, setTodos, delTodo, setUpdate }) => {
           checked={itemProp.completed}
           onChange={() => handleChange(itemProp.id)}
         />
-        <button onClick={handleEditing}>Edit</button>
-        <button onClick={() => delTodo(itemProp.id)}>Delete</button>
+        <button type="button" onClick={handleEditing}>
+          Edit
+        </button>
+        <button type="button" onClick={() => delTodo(itemProp.id)}>
+          Delete
+        </button>
         <span style={itemProp.completed ? completedStyle : null}>
           {itemProp.title}
         </span>
@@ -67,3 +72,34 @@ const TodoItem = ({ itemProp, setTodos, delTodo, setUpdate }) => {
 };
 
 export default TodoItem;
+TodoItem.propTypes = {
+  itemProp: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    title: PropTypes.string.isRequired,
+    completed: PropTypes.bool.isRequired,
+  }).isRequired,
+};
+
+TodoItem.propTypes = {
+  setTodos: PropTypes.arrayOf({
+    id: PropTypes.number.isRequired,
+    title: PropTypes.string.isRequired,
+    completed: PropTypes.bool.isRequired,
+  }).isRequired,
+};
+
+TodoItem.propTypes = {
+  delTodo: PropTypes.arrayOf({
+    id: PropTypes.number.isRequired,
+    title: PropTypes.string.isRequired,
+    completed: PropTypes.bool.isRequired,
+  }).isRequired,
+};
+
+TodoItem.propTypes = {
+  setUpdate: PropTypes.arrayOf({
+    id: PropTypes.number.isRequired,
+    title: PropTypes.string.isRequired,
+    completed: PropTypes.bool.isRequired,
+  }).isRequired,
+};

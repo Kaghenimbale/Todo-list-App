@@ -12,13 +12,11 @@ const Navbar = () => {
   return (
     <nav className="navbar">
       <ul className="navlink">
-        {links.map((link) => {
-          return (
-            <li key={link.text}>
-              <NavLink to={link.path}>{link.text}</NavLink>
-            </li>
-          );
-        })}
+        {links.map((link) => (
+          <li key={link.text}>
+            <NavLink to={link.path}>{link.text}</NavLink>
+          </li>
+        ))}
       </ul>
     </nav>
   );
