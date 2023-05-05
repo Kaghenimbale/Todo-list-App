@@ -1,3 +1,7 @@
 h3 {
   font-size: 1.2rem;
 }
+
+.about_list li {
+  list-style: none;
+}
